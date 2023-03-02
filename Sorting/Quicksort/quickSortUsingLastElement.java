@@ -2,6 +2,12 @@ import java.util.Scanner;
 
 public class quickSortUsingLastElement{
 
+    /*
+     * Best Case :  O(nlogn)
+     * Average Case : O(nlogn)
+     * Worst Case : O(n^2)
+     */
+
     //partition function
     /*Arguments of the array : 1. Array to be sorted, 
                                2. Leftmost index (first index) of the array or subarray, 
