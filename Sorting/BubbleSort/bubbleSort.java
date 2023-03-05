@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class bubbleSort {
 
     /*
-     * Best Case :  O(n^2)
+     * Best Case :  O(n)
      * Average Case : O(n^2)
      * Worst Case : O(n^2)
      */
