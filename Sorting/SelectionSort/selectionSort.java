@@ -50,7 +50,7 @@ public class selectionSort {
             1 2 3 5 4 --> Fixed 1 at first position
             1 2 3 5 4 --> Fixed 2 at second position
             1 2 3 5 4 --> Fixed 3 at third position
-            1 2 3 4 5 --> Fixed 5 at fourth position
+            1 2 3 4 5 --> Fixed 4 at fourth position
 
             That is total 4 iterations.   
         */
