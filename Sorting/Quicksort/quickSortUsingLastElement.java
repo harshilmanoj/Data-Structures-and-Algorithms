@@ -47,7 +47,7 @@ public class quickSortUsingLastElement{
 
         return indx;
     }
-    
+        
     //quickSortFunction
     /*Arguments of the array : 1. Array to be sorted, 
                                2. Leftmost index (first index) of the array or subarray, 
@@ -79,6 +79,7 @@ public class quickSortUsingLastElement{
 
     }
 
+    
     public static void main(String Args[]){
 
         //Creating Scanner for taking inputs.
