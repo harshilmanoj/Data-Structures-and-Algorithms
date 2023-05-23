@@ -1,26 +1,21 @@
-package Traversal.Breadth_First_Search;
-import java.lang.reflect.Array;
+package Traversal.Depth_First_Search;
 import java.util.*;
 
-
-
-public class breadthFirstSearch {
-    
+public class depthFirstSearch {
     //Creation of Edge class
     static class Edge{
         int src;
         int dest;
         int weight;
 
-        //Constructor
         public Edge(int s, int d, int w){
             this.src = s;
             this.dest = d;
-            this.weight  = w;            
+            this.weight = w;
         }
-
     }
 
+    //Function responsible for Graph creation.
     public static void createGraph(ArrayList<Edge> graph[]){
 
         //At the beginning the array is intialised by null value. 
@@ -38,40 +33,33 @@ public class breadthFirstSearch {
         graph[3].add(new Edge(3, 5, 1));
         graph[4].add(new Edge(4, 5, 6));
         graph[5].add(new Edge(5, 6, 3));
-
     }
 
+    //Recursive dfs function.
     //Time Complexity : O(E+V)
-    public static void bfs(ArrayList<Edge> graph[],boolean visited[],int start){
-        Queue<Integer> q = new LinkedList<Integer>();
-        q.add(start);      
-
-        while(!q.isEmpty()){
-            int curr = q.remove();
-            //It will visit the node if and only if the node is not visited before.
-            //This is to prevent cycles while traversing.
-            if( visited[curr] == false){
-                //Three Steps for bfs :
-                // 1. Print the node
-                // 2. Mark the node as visited.
-                // 3. Add the neighbours of that node to the queue.
-                System.out.println(curr);
-                visited[curr] = true;
-                for(int i =0;i<graph[curr].size();i++){
-                    q.add(graph[curr].get(i).dest);
-                }
-
-            }
-        } 
+    public static void dfs(ArrayList<Edge> graph[],boolean visited[],int curr){
+        //Three steps to be followed are : 
+        // 1. Print the node.
+        // 2. Mark the node as visited.
+        // 3. Visit all the first neighbour from that particular node.
+        System.out.println(curr);
+        visited[curr] = true;
+        for(int i = 0;i<graph[curr].size();i++){
+            if(visited[graph[curr].get(i).dest]==false){
+                dfs(graph,visited, graph[curr].get(i).dest);
+            } 
+        }
     }
     public static void main(String[] args) {
+        //Number of vertices.
         int v = 7;
-        //Initialising the Fraph using an Array of ArrayList Of Edge Object.
+        
+        //Initialising an array of ArrayList of Edges.
         ArrayList<Edge> graph[] = new ArrayList[v];
         //Creating a boolean array to keep track if the node is visted before or not
         //This prevents cycle while traversing the node. 
         boolean visited[] = new boolean[v];
-
+        
         /*      
                 GRAPH
 
@@ -87,15 +75,15 @@ public class breadthFirstSearch {
          */
 
         
-        //Calling the function "createGraph".        
+        //Calling the function "createGraph".
         createGraph(graph);
 
         //If discontinous graphs are there then multiple start point is required 
         System.out.println("Graph Traversal : ");
         for(int i = 0;i<v;i++){
-            //Calling bfs function if the node is not visited before.
-            if(visited[i] == false){
-                bfs(graph,visited,i);
+            //Calling dfs function if the node is not visited before.
+            if(visited[i]==false){
+                dfs(graph,visited,i);
             }
         }
     }
