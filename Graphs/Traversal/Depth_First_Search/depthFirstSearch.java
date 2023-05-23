@@ -35,8 +35,8 @@ public class depthFirstSearch {
         graph[5].add(new Edge(5, 6, 3));
     }
 
-    //Recursive dfs function.
     //Time Complexity : O(E+V)
+    //Recursive dfs function.
     public static void dfs(ArrayList<Edge> graph[],boolean visited[],int curr){
         //Three steps to be followed are : 
         // 1. Print the node.
