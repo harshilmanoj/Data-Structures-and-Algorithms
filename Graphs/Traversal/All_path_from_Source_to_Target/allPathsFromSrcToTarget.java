@@ -1,8 +1,6 @@
 package Traversal.All_path_from_Source_to_Target;
-
 import java.util.*;
-
-public class allPathsFromSrcToTarget {
+public class allPathsFromSrcToTarget{
     //Creation of Edge class
     static class Edge{
         int src;
