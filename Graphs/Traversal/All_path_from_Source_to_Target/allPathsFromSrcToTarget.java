@@ -36,18 +36,24 @@ public class allPathsFromSrcToTarget {
         graph[5].add(new Edge(5, 6, 3));
     }
 
-    //Time Complexity : O(E+V)
-    //Recursive dfs function.
-    public static void dfs(ArrayList<Edge> graph[],boolean visited[],int curr,String Path){
-        //Three steps to be followed are : 
-        // 1. Print the node.
-        // 2. Mark the node as visited.
-        // 3. Visit all the first neighbour from that particular node.
-        System.out.println(curr);
-        visited[curr] = true;
+    //Time Complexity : O(V^V)
+    //Recursive : Worst case when a vertex is visited V times.
+    public static void allPaths(ArrayList<Edge> graph[],boolean visited[],int curr,String path,int tar){
+
+        //If the current node is target node print the path and return; 
+        if(tar == curr){
+            System.out.println(path);
+            return;
+        }
+
+        //First we loop through all the neighbours and find if a possible path is there or not.
+        //For that before applying dfs to neighbour we make the node visited and unvisit it after dfs call.
+        //This is because if we don't unvisit the node it will act as a barrier for other paths.
         for(int i = 0;i<graph[curr].size();i++){
             if(visited[graph[curr].get(i).dest]==false){
-                dfs(graph,visited, graph[curr].get(i).dest);
+                visited[curr] = true;
+                allPaths(graph, visited, graph[curr].get(i).dest, path+graph[curr].get(i).dest,tar);
+                visited[curr] = false;
             } 
         }
     }
@@ -82,7 +88,10 @@ public class allPathsFromSrcToTarget {
 
         //If discontinous graphs are there then multiple start point is required 
         System.out.println("All Paths : ");
-        
+        int src = 0;
+        int tar = 6;
+        String path = "0";
+        allPaths(graph, visited, src, path, tar);        
     }
 }
 
