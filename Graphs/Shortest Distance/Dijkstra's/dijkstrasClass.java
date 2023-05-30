@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class dijkstrasClass {
     //Creation of Edge class
@@ -14,8 +15,7 @@ public class dijkstrasClass {
             this.weight = w;
         }
     }
-    
-    
+
     //Function responsible for Graph creation.
     public static void createGraph(ArrayList<Edge> graph[]){
 
@@ -36,6 +36,25 @@ public class dijkstrasClass {
         graph[5].add(new Edge(5, 6, 3));
     }
 
+    //Creation of Pair Class
+    public static class Pair implements Comparable<Pair>{
+        int node;
+        int dist;
+
+        public Pair(int n, int d){
+            this.node = n;
+            this.dist = d;
+        }
+
+        @Override
+        public int compareTo(Pair p2){
+            return this.dist - p2.dist;
+        }
+
+    }
+
+    //Dijkstra's Function 
+    //Time Compexity : O(E+Elog(V))
     public static void dijkstas(ArrayList<Edge> graph[],int src){
         boolean visited[] = new boolean[graph.length];
         int dist[] = new int[graph.length];
@@ -46,6 +65,31 @@ public class dijkstrasClass {
             }
         }
 
+        PriorityQueue<Pair> pq = new PriorityQueue<Pair>();
+
+        pq.add(new Pair(0, 0));
+
+        while(!pq.isEmpty()){
+            Pair p = pq.poll();
+            if(visited[p.node]==false){
+                visited[p.node] = true;
+                for(int i = 0;i<graph[p.node].size();i++){
+                    Edge e = graph[p.node].get(i);
+                    //Relaxation
+                    if(dist[e.dest]>dist[e.src]+e.weight){
+                        dist[e.dest]=dist[e.src]+e.weight;
+                        pq.add(new Pair(e.dest,dist[e.dest]));
+                    }
+                }
+
+            }
+        }
+
+        //Printing the distance from src to all nodes
+        System.out.println("Distance from src : ");
+        for(int i = 0;i<dist.length;i++){
+            System.out.println(i + " : " + dist[i]);
+        }
         
     }
 
@@ -74,12 +118,7 @@ public class dijkstrasClass {
         //Calling the function "createGraph".
         createGraph(graph);
 
-
-        //Printing the Edges of node 0
-        for(int i  = 0;i<graph[0].size();i++){
-            Edge curr = graph[0].get(i);
-            System.out.println("Source : " + curr.src + " , Destination : " + curr.dest + " , Weight : " + curr.weight);
-        }
+       dijkstas(graph, 0);
 
     }
 }
