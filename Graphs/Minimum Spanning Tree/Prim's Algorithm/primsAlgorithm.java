@@ -37,6 +37,7 @@ public class primsAlgorithm{
         graph[5].add(new Edge(5, 6, 3));
     }
 
+    //Pair class
     public static class Pair implements Comparable<Pair>{
         int node;
         int cost;
@@ -52,8 +53,13 @@ public class primsAlgorithm{
         }
     }
 
+    //Mstprims Function
+    //Here we would be using the concept of mst set.
+    //Time Complexity : O(ElogE)
     public static void mstprims(ArrayList<Edge> graph[]){
+        //Similar to bfs we would be using a priority queue
         PriorityQueue<Pair> pq = new PriorityQueue<Pair>();
+        //This boolean array keeps track of the visited nodes as well as mst set.
         boolean visited[] = new boolean[graph.length];
         int mstCost = 0;
         pq.add(new Pair(0, 0));
@@ -64,6 +70,7 @@ public class primsAlgorithm{
                 mstCost += p.cost;
                 for(int i =0;i<graph[p.node].size();i++){
                     Edge e = graph[p.node].get(i);
+                    //Visiting the node that is not in the mst set.
                     if(visited[e.dest]==false){
                         pq.add(new Pair(e.dest,e.weight));
                     }
