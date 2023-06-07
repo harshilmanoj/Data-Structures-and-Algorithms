@@ -40,6 +40,7 @@ public class kosarajusAlgorithm{
         graph[5].add(new Edge(5, 6, 3));
     }
 
+    //Topological Sorting Function.
     public static void topologicalSort(ArrayList<Edge> graph[],boolean visited[],int curr,Stack<Integer> st){
         visited[curr]= true;
         for(int i = 0;i<graph[curr].size();i++){
@@ -52,6 +53,7 @@ public class kosarajusAlgorithm{
         st.push(curr);
     }
 
+    //DFS Function.
     public static void dfs(ArrayList<Edge> graph[],boolean visited[],int curr){
         System.out.print(curr + " " );
         visited[curr] = true;
@@ -61,8 +63,14 @@ public class kosarajusAlgorithm{
             }
         }
     }
-
+    
+    // kosarajusAlgo Function
+    //Time Complexity   : O(V+E)
     public static void kosarajusAlgo(ArrayList<Edge> graph[]){
+        //Kosarajus's Algorithm basically have three steps : 
+        // 1.Topological Sorting.                           : O(V+E)
+        // 2.Transposing the graph.                         : O(V+E)
+        // 3.Performing Dfs in the of topological sort.     : O(V+E)
         Stack<Integer> st = new Stack<Integer>();
         boolean visited[] = new boolean[graph.length];
 
@@ -118,6 +126,7 @@ public class kosarajusAlgorithm{
         //Calling the function "createGraph".
         createGraph(graph);
         System.out.println("The strongly connected components are : ");
+        //Calling the function "kosarajusAlgo".
         kosarajusAlgo(graph);
 
     }
