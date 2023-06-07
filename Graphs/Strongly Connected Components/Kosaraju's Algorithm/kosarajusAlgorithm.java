@@ -29,7 +29,11 @@ public class kosarajusAlgorithm{
         //Adding edges to each and every node.
         graph[0].add(new Edge(0, 1, 2));
         graph[0].add(new Edge(0, 2, 3));
+        graph[1].add(new Edge(1, 0, 3));
+        graph[1].add(new Edge(1, 2, 3));
         graph[1].add(new Edge(1, 3, 3));
+        graph[2].add(new Edge(2, 0, 2));
+        graph[2].add(new Edge(2, 1, 2));
         graph[2].add(new Edge(2, 4, 2));
         graph[3].add(new Edge(3, 5, 1));
         graph[4].add(new Edge(4, 5, 6));
@@ -46,6 +50,16 @@ public class kosarajusAlgorithm{
         } 
 
         st.push(curr);
+    }
+
+    public static void dfs(ArrayList<Edge> graph[],boolean visited[],int curr){
+        System.out.print(curr + " " );
+        visited[curr] = true;
+        for(int i = 0;i<graph[curr].size();i++){
+            if(visited[graph[curr].get(i).dest]== false){
+                dfs(graph, visited, graph[curr].get(i).dest);
+            }
+        }
     }
 
     public static void kosarajusAlgo(ArrayList<Edge> graph[]){
@@ -65,7 +79,17 @@ public class kosarajusAlgorithm{
 
         for(int i = 0;i<graph.length;i++){
             for(int j = 0;j<graph[i].size();j++){
-                
+                visited[i]= false;
+                Edge e = graph[i].get(j);
+                transposeGraph[e.dest].add(new Edge(e.dest, e.src,e.weight));
+            }
+        }
+
+        while(!st.isEmpty()){
+            int curr = st.pop();
+            if(visited[curr]==false){
+                dfs(transposeGraph,visited,curr);
+                System.out.println();
             }
         }
     }
@@ -93,7 +117,8 @@ public class kosarajusAlgorithm{
         
         //Calling the function "createGraph".
         createGraph(graph);
-       
+        System.out.println("The strongly connected components are : ");
+        kosarajusAlgo(graph);
 
     }
 }
