@@ -32,5 +32,7 @@ public class linearSearch {
         //Calling the function.
         linearSearchFunction(arr,x);
 
+        sc.close();
+
     }
 }
