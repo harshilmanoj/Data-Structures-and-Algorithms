@@ -18,6 +18,7 @@ public class frogJump {
         }
 
         int dp[] = new int[n];
+        for(inti i =0)
 
         recursion(arr,0,dp);
         
