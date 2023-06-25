@@ -18,6 +18,7 @@ public class frogJump {
         int twoStep = Math.abs(arr[i]-arr[i+1]) + recursion(arr,i+2,dp);
 
         return dp[i]=Math.min(oneStep, twoStep);
+        
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
