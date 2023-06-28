@@ -10,6 +10,7 @@ public class frogJump {
         if(i = arr.length-2){
             return 0;
         }
+        
         if(dp[i]!=-1){
             return dp[i];
         }
