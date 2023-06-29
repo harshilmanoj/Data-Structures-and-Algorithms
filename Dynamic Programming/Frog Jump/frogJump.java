@@ -7,6 +7,7 @@ public class frogJump {
         if(i == arr.length-1){
             return 0;
         }
+        
         if(i = arr.length-2){
             return 0;
         }
