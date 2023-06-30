@@ -27,6 +27,7 @@ public class frogJump {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        
         System.out.println("Enter the no. elements in the array : ");
         int arr[] =  new int[n];
 
