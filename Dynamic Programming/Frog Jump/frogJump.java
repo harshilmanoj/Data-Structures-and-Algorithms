@@ -15,11 +15,9 @@ public class frogJump {
         if(dp[i]!=-1){
             return dp[i];
         }
-        
-        
+                
         int oneStep = Math.abs(arr[i]-arr[i+2]) + recursion(arr,i+1,dp);
         int twoStep = Math.abs(arr[i]-arr[i+1]) + recursion(arr,i+2,dp);
-
         
         return dp[i]=Math.min(oneStep, twoStep);
         
