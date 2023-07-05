@@ -8,7 +8,6 @@ public class frogJump {
             return 0;
         }
         
-        
         if(i = arr.length-2){
             return 0;
         }
