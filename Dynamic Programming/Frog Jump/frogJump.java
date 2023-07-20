@@ -2,7 +2,6 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
-
 public class frogJump {
     public static int recursion(int arr[],int i,int dp[]){
         if(i == arr.length-1){
