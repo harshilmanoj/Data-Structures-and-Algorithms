@@ -31,5 +31,6 @@ Algorithms are fundamental procedures for solving problems. In this repository, 
 - Sorting algorithms (e.g., Bubble Sort, Quick Sort)
 - Searching algorithms (e.g., Binary Search)
 - Dynamic programming solutions (e.g., Fibonacci)
+- Graph Related Algorithms (e.g., DFS,BFS)
 
 
